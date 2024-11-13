@@ -1,0 +1,174 @@
+/* Căn chỉnh cho danh sách tiện ích và phòng */
+.lh-room-inner-heading {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Căn chỉnh danh sách để có khoảng cách giữa các mục */
+ul {
+    list-style-type: none; /* Bỏ dấu bullet */
+    padding-left: 0; /* Xóa khoảng cách lề trái mặc định */
+}
+
+ul li {
+    margin-bottom: 5px; /* Tạo khoảng cách giữa các mục */
+}
+
+/* Tùy chỉnh căn chỉnh cho các mục phòng */
+#availableRoomList {
+    padding-left: 0; /* Xóa khoảng cách lề trái */
+    margin-top: 10px; /* Thêm khoảng cách trên */
+}
+
+#availableRoomList li {
+    margin-bottom: 5px; /* Khoảng cách giữa các phòng */
+}
+
+/* Thêm khoảng cách giữa giá phòng và danh sách phòng */
+#roomTypePrice {
+    margin-bottom: 15px;
+}
+
+/* Hiệu ứng "rung rung" */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* Đảm bảo phần tử bao bọc được xuống hàng */
+#availableRoomList {
+    display: flex;
+    flex-wrap: wrap; /* Đảm bảo phòng xuống hàng nếu không đủ không gian */
+    justify-content: flex-start;
+    gap: 20px; /* Khoảng cách giữa các phòng */
+    list-style-type: none; /* Bỏ dấu bullet */
+    padding-left: 0;
+    margin-top: 20px; /* Tạo khoảng cách giữa tiêu đề và danh sách phòng */
+    width: 100%; /* Đảm bảo danh sách phòng chiếm đủ chiều rộng */
+}
+
+/* Phần tử li đại diện cho từng phòng */
+#availableRoomList li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px; /* Đặt kích thước cụ thể cho các phòng */
+    height: 50px; /* Chiều cao cho các phòng */
+    padding: 10px 15px;
+    background-color: #f8d7da;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+    animation: shake 0.5s infinite;
+    box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến kích thước */
+    text-align: center;
+}
+
+/* Hiệu ứng rung với độ trễ khác nhau */
+.shake-0 {
+    animation-delay: 0s;
+}
+
+.shake-1 {
+    animation-delay: 0.2s;
+}
+
+.shake-2 {
+    animation-delay: 0.4s;
+}
+
+.shake-3 {
+    animation-delay: 0.6s;
+}
+
+.shake-4 {
+    animation-delay: 0.8s;
+}
+
+/* Xác định lại tiêu đề để loại bỏ bất kỳ đường kẻ nào bên dưới */
+#availableRoomTitle {
+    border-bottom: none; /* Nếu đường ngang do border */
+    text-decoration: none; /* Nếu đường ngang do text-decoration */
+    margin-bottom: 0; /* Xóa bất kỳ khoảng cách nào không cần thiết */
+}
+
+
+
+
+/* Đặt tiêu đề giống với "Amenities" */
+#bedTypeTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #333;
+}
+
+/* Tạo hiệu ứng sang trọng cho Bed Type */
+#bedType {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+    margin-bottom: 20px;
+    animation: fadeIn 1.5s ease-in-out; /* Hiệu ứng mượt khi xuất hiện */
+}
+
+/* Hiệu ứng fadeIn */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.image-gallery {
+    text-align: center;
+}
+
+.main-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.thumbnail-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.thumbnail-gallery img {
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail-gallery img:hover {
+    transform: scale(1.1);
+    border: 2px solid #007bff;
+}

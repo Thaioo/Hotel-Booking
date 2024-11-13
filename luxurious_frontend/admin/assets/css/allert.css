@@ -1,0 +1,74 @@
+.custom-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Ensure it is above other content */
+    transition: opacity 0.3s ease; /* Smooth transition for show/hide */
+}
+
+.alert-content {
+    background: #fefefe;
+    border-radius: 10px;
+    padding: 25px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    animation: slideIn 0.4s ease; /* Slide in animation */
+}
+
+@keyframes slideIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#alertMessage {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 20px;
+    display: block;
+}
+
+#alertLink {
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#alertLink:hover {
+    text-decoration: underline;
+}
+
+#closeAlert {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: red;
+    border-radius: 50%;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+#closeAlert:hover {
+    background-color: darkred;
+}

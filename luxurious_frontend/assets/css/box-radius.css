@@ -1,0 +1,92 @@
+/* Box radius none */
+.lh-buttons, .lh-buttons-2 {
+  border-radius: 0;
+}
+
+ul.navbar-nav .dropdown .dropdown-menu {
+  border-radius: 0;
+}
+
+.lh-hero .main-slider-dot .swiper-pagination-bullet {
+  border-radius: 0;
+}
+
+.search-control-boxing {
+  border-radius: 0;
+}
+
+.rooms-slider .slick-dots li {
+  border-radius: 0;
+}
+
+.lh-amenities {
+  border-radius: 0;
+}
+
+.dark-bg .lh-services {
+  border-radius: 0;
+}
+
+.lh-buttons-invers {
+  border-radius: 0;
+}
+
+.lh-prices {
+  border-radius: 0;
+}
+.lh-prices .prices-image {
+  border-radius: 0;
+}
+
+.v-details {
+  border-radius: 0;
+}
+
+.prev-slick-img img, .next-slick-img img {
+  border-radius: 0;
+}
+.prev-slick-img:after, .next-slick-img:after {
+  border-radius: 0;
+}
+
+.lh-testimonials-contain .lh-testimonials-holiday {
+  border-radius: 0;
+}
+
+.blog-image-top {
+  border-radius: 0;
+}
+
+.rooms-slider .rooms-card {
+  border-radius: 0;
+}
+
+.amenities-detail {
+  border-radius: 0;
+}
+.amenities-detail .detail-box {
+  border-radius: 0;
+}
+.amenities-detail .amenities-box img {
+  border-radius: 0;
+}
+
+.section-about img {
+  border-radius: 0;
+}
+
+footer .footer-top-section .lh-social-media .lh-footer-social .lh-control-footer .lh-control-inner-icons {
+  border-radius: 0;
+}
+footer .footer-top-section .lh-social-media .lh-footer-social .lh-control-footer .form-control {
+  border-radius: 0;
+}
+
+.lh-card {
+  border-radius: 0;
+}
+
+.lh-form input {
+  border-radius: 0;
+}
+/*# sourceMappingURL=box-radius.css.map */

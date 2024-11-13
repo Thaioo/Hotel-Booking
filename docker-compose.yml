@@ -1,0 +1,118 @@
+services:
+  redis:
+    image: redis
+    container_name: hotel-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data # Volume này lưu trữ dữ liệu Redis (database)
+    networks:
+      - local
+
+  redisinsight:
+    image: redis/redisinsight:latest
+    container_name: hotel-redisinsight
+    ports:
+      - "5540:5540"
+    networks:
+      - local
+    depends_on:
+      - redis
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672" # RabbitMQ server port
+      - "15672:15672" # RabbitMQ management UI port
+    environment:
+      RABBITMQ_DEFAULT_USER: hotelbooking
+      RABBITMQ_DEFAULT_PASS: 875879
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq # Lưu trữ dữ liệu của RabbitMQ, docker quản lý
+    networks:
+      - local
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=875879
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/luxurious.sql:/docker-entrypoint-initdb.d/0_init.sql #tự động chạy script sql
+    networks:
+      - local
+
+  #Tự động tạo image và đẩy email consumer lên docker container
+  # emailconsumer:
+  #   build:
+  #     context: ./emailconsumer
+  #     dockerfile: Dockerfile
+  #   container_name: email-consumer
+  #   image: luxurious_emailconsumer
+  #   ports:
+  #     - 8080:8080
+  #   environment:
+  #     - JWT_KEY=4iE5Fek4KhIoKcenFge6lD1ZnhqdcyFC4iVr5iQCOb8=
+  #     - SPRING_MAIL_FROM=thamnguyen.190599@gmail.com
+  #     - SPRING_MAIL_HOST=smtp.gmail.com
+  #     - SPRING_MAIL_PORT=587
+  #     - SPRING_MAIL_USERNAME=thamnguyen.190599@gmail.com
+  #     - SPRING_MAIL_PASSWORD=iptsbceskigoriyh
+  #     - SPRING_RABBITMQ_HOST=rabbitmq
+  #     - SPRING_RABBITMQ_PORT=5672
+  #     - SPRING_RABBITMQ_USERNAME=hotelbooking
+  #     - SPRING_RABBITMQ_PASSWORD=875879
+  #   restart: on-failure
+  #   depends_on:
+  #     - rabbitmq
+  #   networks:
+  #     - local
+
+  #ĐOẠN NÀY LÀ ĐỂ BUILD APP LÊN DOCKER - HIỆN TẠI KHÔNG CẦN CHẠY
+  #Tự động tạo image và đẩy luxurious-backend lên container
+  # luxurious:
+  #   build:
+  #     context: ./luxurious-hotel-backend
+  #     dockerfile: Dockerfile
+  #   container_name: luxurious_backend
+  #   image: luxurious_backend
+  #   ports:
+  #     - 9999:9999
+  #   environment:
+  #     - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/luxurioushotel
+  #     - SPRING_DATASOURCE_USERNAME=root
+  #     - SPRING_DATASOURCE_PASSWORD=875879
+  #     - SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE=20MB
+  #     - SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE=20MB
+  #     - JWT_KEY=4iE5Fek4KhIoKcenFge6lD1ZnhqdcyFC4iVr5iQCOb8=
+  #     - SPRING_DATA_REDIS_HOST=redis
+  #     - SPRING_DATA_REDIS_PORT=6379
+  #     - SPRING_MAIL_FROM=thamnguyen.190599@gmail.com
+  #     - SPRING_MAIL_HOST=smtp.gmail.com
+  #     - SPRING_MAIL_PORT=587
+  #     - SPRING_MAIL_USERNAME=thamnguyen.190599@gmail.com
+  #     - SPRING_MAIL_PASSWORD=iptsbceskigoriyh
+  #     - SPRING_RABBITMQ_HOST=rabbitmq
+  #     - SPRING_RABBITMQ_PORT=5672
+  #     - SPRING_RABBITMQ_USERNAME=hotelbooking
+  #     - SPRING_RABBITMQ_PASSWORD=875879
+  #   restart: on-failure
+  #   depends_on:
+  #     - rabbitmq
+  #     - mysql
+  #     - redis
+  #   networks:
+  #     - local
+
+volumes:
+  mysql_data:
+  redis_data:
+  rabbitmq_data:
+
+networks:
+  local:
+    driver: bridge

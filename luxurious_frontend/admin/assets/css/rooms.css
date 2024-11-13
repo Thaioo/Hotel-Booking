@@ -1,0 +1,11 @@
+/* Center text both vertically and horizontally in the tbody cells */
+.table tbody td {
+    text-align: center; /* Horizontal centering */
+    vertical-align: middle; /* Vertical centering */
+}
+
+/* Optional: Center text in the thead as well */
+.table thead th {
+    text-align: center;
+    vertical-align: middle;
+}
